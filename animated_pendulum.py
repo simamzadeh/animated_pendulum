@@ -50,33 +50,52 @@ def find_coordinates(angle):
 
     return x_vals, y_vals
 
-    
+# Plotting function
+
+def plot_pendulum(angle):
+    x_vals, y_vals = find_coordinates(angle)
+    return plt.plot(x_vals, y_vals)
+
+# print(plot_pendulum(30))
 
 
-# timepoints = np.arange(x5, 15, 2)
-# for t in timepoints:
-#     displacement = 150*np.cos(np.sqrt(9.8/5))
-#
-#
-# def time(angle):
-#     x_vals = np.linspace(7.5, 10, data_points)
-#     y_vals = (np.sqrt(g/length)) * (1/angle)
-#     return x_vals, y_vals
-#
-#
-# print(time(30))
-
-# def length(angle):
-#     return (9.8/(angle)**2) * 1/timepoints
+angles = [30, 20, 10, 0, -10, -20, -30]
 
 
-#Plotting the graph
-# plt.plot(x_vals, y_vals)
+# Plot the pendulum
+for a in angles:
+    pendulum_line = print(plot_pendulum(a))
 
-#Adding limits to graph
+
+# Animation function
+
+# angles = [30, 20, 10, 0, -10, -20, -30]
+
+def animate_pendulum(frame):
+    x_vals, y_vals = find_coordinates(frame)
+    pendulum_line.set_data(x_vals, y_vals)
+
+
+# Making time values
+
+angles = []
+
+timepoints = np.arange(0, 25, 0.25)
+for t in timepoints:
+    displacement = 150*np.cos(np.sqrt(9.8/5))
+    angle = (np.sqrt(g/length)) * t
+    angles.append(angle)
+
+
+# Adding limits to graph
 plt.xlim(5, 15)
 plt.ylim(4, 11)
 
-plt.plot(x_vals1, y_vals1)
-plt.plot(x_vals2, y_vals2)
+
+# Calling the animation function
+
+animation = FuncAnimation(plt.gcf(), animate_pendulum, frames = len(angles), repeat = True)
+
+# plt.plot(x_vals1, y_vals1)
+# plt.plot(x_vals2, y_vals2)
 plt.show()
