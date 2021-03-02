@@ -10,18 +10,35 @@ initial_amp = 150
 g = 9.8
 
 
-# Plot pendulum at 30 degrees
+# Plot pendulum at 30 degrees - LINE 1
 
-x_length = np.sin(30*(np.pi/180))*5
-y_length = np.cos(30*(np.pi/180))*5
-gradient = y_length/x_length
+x_length1 = np.sin(30*(np.pi/180))*5
+y_length1 = np.cos(30*(np.pi/180))*5
+gradient1 = y_length1/x_length1
 
-x_coord = 10 - x_length
-y_coord = 10 - y_length
+x_coord1 = 10 - x_length1
+y_coord1 = 10 - y_length1
 
-x_vals = [x_coord, 10]
-y_vals = [y_coord, 10]
+x_vals1 = [x_coord1, 10]
+y_vals1 = [y_coord1, 10]
 
+# Plot pendulum at 15 degrees - LINE 2
+
+x_length2 = np.sin(15*(np.pi/180))*5
+y_length2 = np.cos(15*(np.pi/180))*5
+gradient2 = y_length2/x_length2
+
+x_coord2 = 10 - x_length2
+y_coord2 = 10 - y_length2
+
+x_vals2 = [x_coord2, 10]
+y_vals2 = [y_coord2, 10]
+
+
+# # Defining a function to take the angle and return the x and y coordinates
+#
+# def find_coordinates(angle):
+#
 
 # timepoints = np.arange(x5, 15, 2)
 # for t in timepoints:
@@ -47,5 +64,6 @@ y_vals = [y_coord, 10]
 plt.xlim(5, 15)
 plt.ylim(4, 11)
 
-plt.plot(x_vals, y_vals)
+plt.plot(x_vals1, y_vals1)
+plt.plot(x_vals2, y_vals2)
 plt.show()
