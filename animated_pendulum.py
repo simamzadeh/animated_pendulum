@@ -35,10 +35,23 @@ x_vals2 = [x_coord2, 10]
 y_vals2 = [y_coord2, 10]
 
 
-# # Defining a function to take the angle and return the x and y coordinates
-#
-# def find_coordinates(angle):
-#
+# Defining a function to take the angle and return the x and y coordinates
+
+def find_coordinates(angle):
+    x_length = np.sin(angle * (np.pi / 180)) * 5
+    y_length = np.cos(angle * (np.pi / 180)) * 5
+    gradient = y_length / x_length
+
+    x_coord = 10 - x_length
+    y_coord = 10 - y_length
+
+    x_vals = [x_coord, 10]
+    y_vals = [y_coord, 10]
+
+    return x_vals, y_vals
+
+    
+
 
 # timepoints = np.arange(x5, 15, 2)
 # for t in timepoints:
