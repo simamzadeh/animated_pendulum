@@ -6,7 +6,7 @@ import matplotlib.animation as animation
 
 # Set constants
 length = 5
-initial_amp = 150
+amplitude = 150
 g = 9.8
 
 
@@ -56,15 +56,21 @@ def plot_pendulum(angle):
     x_vals, y_vals = find_coordinates(angle)
     return plt.plot(x_vals, y_vals)
 
-# print(plot_pendulum(30))
 
+# Making time values
 
-angles = [30, 20, 10, 0, -10, -20, -30]
+angles = []
+
+timepoints = np.arange(0, 25, 0.25)
+for t in timepoints:
+    displacement = 150*np.cos(np.sqrt(9.8/5))
+    # angle = (np.sqrt(g/length)) * t
+    angle = np.arccos(displacement/amplitude)
+    angles.append(angle)
 
 
 # Plot the pendulum
-for a in angles:
-    pendulum_line = print(plot_pendulum(a))
+pendulum_line, = plot_pendulum(angle)
 
 
 # Animation function
@@ -74,17 +80,6 @@ for a in angles:
 def animate_pendulum(frame):
     x_vals, y_vals = find_coordinates(frame)
     pendulum_line.set_data(x_vals, y_vals)
-
-
-# Making time values
-
-angles = []
-
-timepoints = np.arange(0, 25, 0.25)
-for t in timepoints:
-    displacement = 150*np.cos(np.sqrt(9.8/5))
-    angle = (np.sqrt(g/length)) * t
-    angles.append(angle)
 
 
 # Adding limits to graph
