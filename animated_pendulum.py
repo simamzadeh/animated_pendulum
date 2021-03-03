@@ -60,10 +60,16 @@ def plot_pendulum(angle):
 # Making time values
 
 angles = []
+# displacements = []
 
 timepoints = np.arange(0, 25, 0.25)
 for t in timepoints:
-    displacement = 150*np.cos(np.sqrt(9.8/5))
+    displacement = amplitude * np.cos(np.sqrt(9.8/5))
+
+    # Reducing the amplitude by 5% each time
+    # displacement = (amplitude * 0.95) * np.cos(np.sqrt(g/length))
+    # displacements.append(displacement)
+
     # angle = (np.sqrt(g/length)) * t
     angle = np.arccos(displacement/amplitude)
     angles.append(angle)
@@ -75,7 +81,7 @@ pendulum_line, = plot_pendulum(angle)
 
 # Animation function
 
-# angles = [30, 20, 10, 0, -10, -20, -30]
+# angles = [30, 20, 10, 0, -10, -20, -30] # <<<< dummy list
 
 def animate_pendulum(frame):
     x_vals, y_vals = find_coordinates(frame)
@@ -83,6 +89,7 @@ def animate_pendulum(frame):
 
 
 # Adding limits to graph
+
 plt.xlim(5, 15)
 plt.ylim(4, 11)
 
@@ -91,6 +98,15 @@ plt.ylim(4, 11)
 
 animation = FuncAnimation(plt.gcf(), animate_pendulum, frames = len(angles), repeat = True)
 
+# Plotting the centre and end of the pendulum
+
+# plt.plot(10, 10, c = "y", ls = "*")
+# plt.plot()
+
+# Initial pendulum plot tests
+
 # plt.plot(x_vals1, y_vals1)
 # plt.plot(x_vals2, y_vals2)
+
+
 plt.show()
