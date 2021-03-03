@@ -40,7 +40,8 @@ y_vals2 = [y_coord2, 10]
 def find_coordinates(angle):
     x_length = np.sin(angle * (np.pi / 180)) * 5
     y_length = np.cos(angle * (np.pi / 180)) * 5
-    gradient = y_length / x_length
+
+    # gradient = y_length / x_length
 
     x_coord = 10 - x_length
     y_coord = 10 - y_length
@@ -60,18 +61,18 @@ def plot_pendulum(angle):
 # Making time values
 
 angles = []
-# displacements = []
+displacements = []
 
 timepoints = np.arange(0, 25, 0.25)
 for t in timepoints:
-    displacement = amplitude * np.cos(np.sqrt(9.8/5))
+    displacement = amplitude * np.cos((np.sqrt(g/length)) * t)
 
     # Reducing the amplitude by 5% each time
-    # displacement = (amplitude * 0.95) * np.cos(np.sqrt(g/length))
+    # displacement = (amplitude * 0.95) * np.cos(np.sqrt(g/length) * t)
     # displacements.append(displacement)
 
     # angle = (np.sqrt(g/length)) * t
-    angle = np.arccos(displacement/amplitude)
+    angle = displacement/length
     angles.append(angle)
 
 
@@ -100,7 +101,7 @@ animation = FuncAnimation(plt.gcf(), animate_pendulum, frames = len(angles), rep
 
 # Plotting the centre and end of the pendulum
 
-# plt.plot(10, 10, c = "y", ls = "*")
+plt.plot(10, 10, color = "y", marker = "*")
 # plt.plot()
 
 # Initial pendulum plot tests
