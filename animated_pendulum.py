@@ -71,15 +71,14 @@ def plot_endpoint(angle):
 # Making time values
 
 angles = []
-displacements = []
 
 timepoints = np.arange(0, 25, 0.25)
 for t in timepoints:
-    displacement = amplitude * np.cos((np.sqrt(g / length)) * t)
+    # displacement = amplitude * np.cos((np.sqrt(g / length)) * t)
 
     # Reducing the amplitude by 5% each time
-    # displacement = (amplitude * 0.95) * np.cos(np.sqrt(g/length) * t)
-    # displacements.append(displacement)
+    amplitude = amplitude * 0.95
+    displacement = amplitude * np.cos(np.sqrt(g/length) * t)
 
     # angle = (np.sqrt(g/length)) * t
     angle = displacement / length
