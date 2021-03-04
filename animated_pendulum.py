@@ -112,14 +112,13 @@ plt.ylim(4, 11)
 
 # Calling the animation functions
 
-pendulum_anim = FuncAnimation(plt.gcf(), animate_pendulum, frames=len(angles), repeat=True)
+pendulum_anim = FuncAnimation(plt.gcf(), animate_pendulum, frames=angles, repeat=True)
 
-endpoint_anim = FuncAnimation(plt.gcf(), animate_endpoint, frames=len(angles), repeat=True)
+endpoint_anim = FuncAnimation(plt.gcf(), animate_endpoint, frames=angles, repeat=True)
 
 # Plotting the centre and end of the pendulum
 
 plt.plot(10, 10, color="y", marker="*")
-
 
 # Initial pendulum plot tests
 
