@@ -40,7 +40,7 @@ def find_coordinates(angle):
     x_length = np.sin(angle * (np.pi / 180)) * 5
     y_length = np.cos(angle * (np.pi / 180)) * 5
 
-    # gradient = y_length / x_length
+    # gradient = y_length / x_length # realised this was unnecessary
 
     x_coord = 10 - x_length
     y_coord = 10 - y_length
@@ -59,6 +59,8 @@ def find_coordinates(angle):
 def plot_pendulum(angle):
     x_vals, y_vals, x_coord, y_coord = find_coordinates(angle)
     return plt.plot(x_vals, y_vals)
+    return plt.plot(x_coord, y_coord, color="g", marker=".")
+
 
 
 # Plotting endpoint function
@@ -84,6 +86,7 @@ for t in timepoints:
     angle = displacement / length
     angles.append(angle)
 
+
 # Plot the pendulum and endpoint
 
 pendulum_line, = plot_pendulum(angle)
@@ -97,11 +100,12 @@ pendulum_endpoint, = plot_endpoint(angle)
 def animate_pendulum(frame):
     x_vals, y_vals, x_coord, y_coord = find_coordinates(frame)
     pendulum_line.set_data(x_vals, y_vals)
-
-
-def animate_endpoint(frame):
-    x_vals, y_vals, x_coord, y_coord = find_coordinates(frame)
     pendulum_endpoint.set_data(x_coord, y_coord)
+
+
+# def animate_endpoint(frame):
+#     x_vals, y_vals, x_coord, y_coord = find_coordinates(frame)
+#     pendulum_endpoint.set_data(x_coord, y_coord)
 
 
 # Adding limits to graph
@@ -113,16 +117,17 @@ plt.ylim(4, 11)
 
 pendulum_anim = FuncAnimation(plt.gcf(), animate_pendulum, frames=angles, repeat=True)
 
-endpoint_anim = FuncAnimation(plt.gcf(), animate_endpoint, frames=angles, repeat=True)
+# endpoint_anim = FuncAnimation(plt.gcf(), animate_endpoint, frames=angles, repeat=True)
 
 # Plotting the centre and end of the pendulum
 
 plt.plot(10, 10, color="y", marker="*")
 
 # Initial pendulum plot tests
-
 # plt.plot(x_vals1, y_vals1)
 # plt.plot(x_vals2, y_vals2)
 
+
+# Showing our animation!
 
 plt.show()
